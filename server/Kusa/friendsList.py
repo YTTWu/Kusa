@@ -18,6 +18,12 @@ steamidList = []
     
 
 def get_friend_id(request):
+
+    #reset "steamidList" everytime we call this function
+    #we may find better way to reduce the runtime later
+    #save the list first time and only update that list in the future
+    steamidList = []
+
     method = "/GetFriendList"
     steam_id = request.GET.get("steamid")
     friendsList = requests.get(conf["steam_api_url"]+ interface + method + v1 + "/?key=" + conf["steam_api_key"] + "&relationship=friend&steamid=" + steam_id + "&format=" + format).json()
