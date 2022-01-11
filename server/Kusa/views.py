@@ -21,3 +21,5 @@ def get_owned_games(request):
     steamkey = request.GET.get("steamkey")
     response = requests.get(conf["steam_api_url"]+ "/IPlayerService" + method + "/v0001" + "/?key=" + steamkey + "&steamid=" + steam_id + "&format=JSON").json()
     return JsonResponse(response)
+
+

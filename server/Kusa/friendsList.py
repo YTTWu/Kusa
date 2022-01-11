@@ -20,8 +20,7 @@ steamidList = []
 def get_friend_id(request):
     method = "/GetFriendList"
     steam_id = request.GET.get("steamid")
-    steam_key = request.GET.get("steamkey")
-    friendsList = requests.get(conf["steam_api_url"]+ interface + method + v1 + "/?key=" + steam_key + "&relationship=friend&steamid=" + steam_id + "&format=" + format).json()
+    friendsList = requests.get(conf["steam_api_url"]+ interface + method + v1 + "/?key=" + conf["steam_api_key"] + "&relationship=friend&steamid=" + steam_id + "&format=" + format).json()
     
                                         
     #friendsList is a nest dictionary
@@ -51,7 +50,7 @@ def get_friend_id(request):
     #     print(i)
     # return JsonResponse(friendsList)            
     
-    frinedsName = []
+    friendsName = []
 
     #loop through the list of steamid
     for i in range(len(steamidList)):
@@ -72,13 +71,13 @@ def get_friend_id(request):
                         for l in userInfo:
                             for name in l:
                                 if name == "personaname":
-                                    frinedsName.append(l[name])
+                                    friendsName.append(l[name])
     #testing
-    print(frinedsName)
-    print(len(frinedsName))
+    print(friendsName)
+    print(len(friendsName))
 
    
 
 
 
-    return JsonResponse(summaryInfo)
+    return JsonResponse(friendsName, safe=False)

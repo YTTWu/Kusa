@@ -10,7 +10,7 @@ import { default as hand } from "../../assets/friends/hand.svg";
 
 
 import { invites } from "./FriendsListHelperFunc/InviteHelper";
-import { friends } from "./FriendsListHelperFunc/friendsHelper";
+import { Friends } from "./FriendsListHelperFunc/friendsHelper";
 import { blocked } from "./FriendsListHelperFunc/blockHelper";
 
 
@@ -45,7 +45,7 @@ export const FriendsList: React.FC = () => {
                 friends
             </KusaHeader>
             
-            {friends()}
+            {Friends()}
 
             
 

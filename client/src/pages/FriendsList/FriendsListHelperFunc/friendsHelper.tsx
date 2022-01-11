@@ -2,14 +2,34 @@
 import { person } from "./personHelper";
 import { wsv } from "./WSV";
 
-var data = ["kusa","kusa","kusa","kusa"]
+import React, {useEffect, useState} from 'react';
+
+
+
+
+
+
+var names = ["kusa","kusa","kusa","kusa"]
 var array_of_people:any[] = []
-export function friends()
+export function Friends()
 {
+
+    const[names,setNames] = useState([]);
+
+    useEffect(() => {
+    (
+        async () => {
+            const response = await fetch('http://localhost:8000/api/GetFriendsId/?steamid=76561198283847615')
+            const data = await response.json();
+            setNames(data)
+        }
+    )();
+    },[]);
+
     array_of_people = []
-    for (var i = 0; i < data.length; i++)
+    for (var i = 0; i < names.length; i++)
     {
-        array_of_people.push(person(data[i]))
+        array_of_people.push(person(names[i]))
         array_of_people.push(wsv())
     }
     return array_of_people
