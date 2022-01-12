@@ -9,7 +9,7 @@ import React, {useEffect, useState} from 'react';
 
 
 
-var names = ["kusa","kusa","kusa","kusa"]
+//var names = ["kusa","kusa","kusa","kusa"]
 var array_of_people:any[] = []
 export function Friends()
 {
@@ -34,3 +34,9 @@ export function Friends()
     }
     return array_of_people
 }
+
+
+//things I can improve
+//What do we want to do when we click on the friends?
+//if we want to see more steam realated thins, should i pass a dict {"SturmKoala":34230498230498204}
+//so i can use its steamid to do more things
